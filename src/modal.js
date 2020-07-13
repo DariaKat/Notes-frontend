@@ -42,7 +42,7 @@ const NoteModal = ({ visible, title, onCancel, onOk }) => {
           <Rate character={<FireFilled />} />
         </div>
         <div className="datepicker">
-          <p>Date:</p>
+          <p>Date:qw</p>
           <DatePicker onChange={onChange} />
         </div>
       </div>
