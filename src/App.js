@@ -36,17 +36,14 @@ const App = () => {
       title: "Importance",
       dataIndex: "importance",
       key: "importance",
-      render: () => (
-        <Rate character={<FireFilled />}  />
+      render: (importance) => (
+        <Rate character={<FireFilled />} value={importance} />
       )
     },
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: () => (
-        <p> Какая-то дата</p>
-      )
     },
     {
       title: "Actions",
@@ -81,8 +78,8 @@ const App = () => {
       setNotes(res);
     });
 
-  const onClickAdd = (title, textN) => {
-    addNote(title, textN).then(() => {
+  const onClickAdd = (title, textN, importance, date) => {
+    addNote(title, textN, importance, date).then(() => {
       getNotes();
     });
     setShowModal("");
@@ -94,9 +91,9 @@ const App = () => {
     setId(text._id);
   };
 
-  const onClickEdit = (title, textN) => {
+  const onClickEdit = (title, textN, importance, date) => {
     console.log(id);
-    editNote(id, title, textN).then(() => {
+    editNote(id, title, textN, importance, date).then(() => {
       getNotes();
     });
     setShowModal("");

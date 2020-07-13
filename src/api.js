@@ -9,13 +9,15 @@ const fetchNotes = () =>
     return res.data;
   });
 
-const addNote = (title, textN) =>
+const addNote = (title, textN, importance, date) =>
   axios({
     method: "post",
     url: "http://localhost:8001/notes/add",
     data: {
       title: title,
       body: textN,
+      importance: importance,
+      date: date,
     },
   });
 
@@ -28,7 +30,7 @@ const deleteNote = (id) =>
     },
   });
 
-const editNote = (id, title, textN) =>
+const editNote = (id, title, textN, importance, date) =>
   axios({
     method: "post",
     url: "http://localhost:8001/notes/update",
@@ -36,6 +38,8 @@ const editNote = (id, title, textN) =>
       id: id,
       title: title,
       body: textN,
+      importance: importance,
+      date: date,
     },
   });
 
