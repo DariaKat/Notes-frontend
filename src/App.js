@@ -15,7 +15,7 @@ import NoteModal from './modal';
 const { TabPane } = Tabs;
 
 const App = () => {
-  const [data, setNotes] = useState([]);
+  // const [data, setNotes] = useState([]);
   const [showModal, setShowModal] = useState('');
   const [id, setId] = useState('');
 
@@ -59,7 +59,7 @@ const App = () => {
       width: '100px',
       render: (text) => (
         <div className="actions">
-          <Button
+          {/* <Button
             className="editNote"
             type="primary"
             icon={<EditOutlined />}
@@ -69,48 +69,79 @@ const App = () => {
             className="deleteNote"
             type="primary"
             icon={<DeleteFilled />}
-            onClick={() => onClickDelete(text)}
+            onClick={() => onClickDelete(text)} */}
           />
         </div>
       ),
     },
   ];
 
-  useEffect(() => {
-    getNotes();
-  }, []);
+  const data = [
+    {
+      key: '1',
+      title: 'John Brown',
+      text: 32,
+      importance: 4,
+      date: '25.08.2020',
+    },
+    {
+      key: '2',
+      title: 'John Brown',
+      text: 32,
+      importance: 4,
+      date: '25.08.2020',
+    },
+    {
+      key: '3',
+      title: 'John Brown',
+      text: 32,
+      importance: 4,
+      date: '25.08.2020',
+    },
+    {
+      key: '4',
+      title: 'John Brown',
+      text: 32,
+      importance: 4,
+      date: '25.08.2020',
+    },
+  ];
 
-  const getNotes = () =>
-    fetchNotes().then((res) => {
-      setNotes(res);
-    });
+  // useEffect(() => {
+  //   getNotes();
+  // }, []);
 
-  const onClickAdd = (title, textN, importance, date) => {
-    addNote(title, textN, importance, date)
-      .then(() => getNotes())
-      .catch((error) => console.log('error', error));
-    setShowModal('');
-  };
+  // const getNotes = () =>
+  //   fetchNotes().then((res) => {
+  //     setNotes(res);
+  //   });
 
-  const showEditModal = ({ _id }) => {
-    setShowModal('edit');
-    console.log(_id);
-    setId(_id);
-  };
+  // const onClickAdd = (title, textN, importance, date) => {
+  //   addNote(title, textN, importance, date)
+  //     .then(() => getNotes())
+  //     .catch((error) => console.log('error', error));
+  //   setShowModal('');
+  // };
 
-  const onClickEdit = (title, textN, importance, date) => {
-    console.log(id);
-    editNote(id, title, textN, importance, date).then(() => {
-      getNotes();
-    });
-    setShowModal('');
-  };
+  // const showEditModal = ({ _id }) => {
+  //   setShowModal('edit');
+  //   console.log(_id);
+  //   setId(_id);
+  // };
 
-  const onClickDelete = (text) => {
-    deleteNote(text._id).then(() => {
-      getNotes();
-    });
-  };
+  // const onClickEdit = (title, textN, importance, date) => {
+  //   console.log(id);
+  //   editNote(id, title, textN, importance, date).then(() => {
+  //     getNotes();
+  //   });
+  //   setShowModal('');
+  // };
+
+  // const onClickDelete = (text) => {
+  //   deleteNote(text._id).then(() => {
+  //     getNotes();
+  //   });
+  // };
 
   const handleCancel = () => setShowModal('');
 
@@ -139,12 +170,12 @@ const App = () => {
             />
           </div>
           <div>
-            <NoteModal
+            {/* <NoteModal
               title={showModal === 'add' ? 'Add Note' : 'Edit Note'}
               visible={showModal}
               onCancel={handleCancel}
               onOk={showModal === 'add' ? onClickAdd : onClickEdit}
-            />
+            /> */}
           </div>
         </TabPane>
         <TabPane tab="Tab 2" key="2">
