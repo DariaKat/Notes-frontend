@@ -17,11 +17,11 @@ b {
   width: 200px;
 }
 
-.ant-input-affix-wrapper {
+.title {
   margin: 0 0 5px 0;
 }
 
-textarea.ant-input {
+.text {
   height: 100px;
   max-height: 100px;
 }
@@ -43,7 +43,7 @@ textarea.ant-input {
   margin: 10px;
 }
 
-p {
+.paragraph {
   margin: 0;
   font-weight: 700;
 }
@@ -60,9 +60,8 @@ p {
   justify-content: space-around;
 }
 
-.ant-tabs-nav-list {
+.socket {
   margin: 0;
-  height: 30px;
-  padding: 0 40px 0 20px;
   font-weight: 700;
+  text-align: end;
 }

@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal, Input, Rate, DatePicker } from 'antd';
 import { FireFilled } from '@ant-design/icons';
+import { useRootData } from '../../../hooks/use-root-data';
 
 const { TextArea } = Input;
 
 const NoteModal = ({ visible, title, onCancel, onOk }) => {
-  const [titleNode, setTitle] = useState('');
-  const [textN, setText] = useState('');
-  const [importance, setImportance] = useState(0);
-  const [date, setDate] = useState(null);
+  const {
+    titleNote,
+    setTitle,
+    textN,
+    setText,
+    importance,
+    setImportance,
+    date,
+    setDate,
+  } = useRootData((store) => ({
+    titleNote: store.mainStore.titleNote,
+    setTitle: store.mainStore.setTitle,
+    textN: store.mainStore.textN,
+    setText: store.mainStore.setText,
+    importance: store.mainStore.importance,
+    setImportance: store.mainStore.setImportance,
+    date: store.mainStore.date,
+    setDate: store.mainStore.setDate,
+  }));
 
   const onChangeTitle = (e) => setTitle(e.target.value);
 
   const onChangeText = (e) => setText(e.target.value);
+
+  const onSubmit = () => {
+    onOk(titleNote, textN, importance, date.format('DD.MM.YYYY').toString());
+    setTitle('');
+    setText('');
+    setImportance(0);
+    setDate(null);
+  };
+
+  const dateFormatList = ['DD.MM.YYYY'];
 
   const onChangeDatePicker = (date) => {
     setDate(date);
@@ -22,25 +48,17 @@ const NoteModal = ({ visible, title, onCancel, onOk }) => {
     setImportance(value);
   };
 
-  const onSubmit = () => {
-    onOk(titleNode, textN, importance, date.format('DD.MM.YYYY').toString());
-    setTitle('');
-    setText('');
-    setImportance(0);
-    setDate(null);
-  };
-
-  const dateFormatList = ['DD.MM.YYYY'];
-
   return (
     <Modal visible={visible} title={title} onCancel={onCancel} onOk={onSubmit}>
       <Input
-        value={titleNode}
+        className="title"
+        value={titleNote}
         placeholder="Title"
         allowClear
         onChange={onChangeTitle}
       />
       <TextArea
+        className="text"
         value={textN}
         placeholder="Text"
         allowClear
@@ -48,7 +66,7 @@ const NoteModal = ({ visible, title, onCancel, onOk }) => {
       />
       <div className="importance-date">
         <div className="importance">
-          <p>Importance: </p>
+          <p className="paragraph">Importance: </p>
           <Rate
             value={importance}
             character={<FireFilled />}
@@ -56,7 +74,7 @@ const NoteModal = ({ visible, title, onCancel, onOk }) => {
           />
         </div>
         <div className="datepicker">
-          <p>Date: </p>
+          <p className="paragraph">Date: </p>
           <DatePicker
             value={date}
             onChange={onChangeDatePicker}
