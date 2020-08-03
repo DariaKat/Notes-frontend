@@ -70,6 +70,7 @@ const Notes = () => {
 
   return (
     <Table
+      className="table"
       rowKey="_id"
       pagination={{ pageSize: 5 }}
       columns={columns}

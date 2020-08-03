@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
@@ -41,19 +39,13 @@ const App = () => {
   return (
     <div className="App">
       <Tabs size="large" defaultActiveKey="1" type="card">
-        <TabPane className="tab" tab="Notes" key="1">
-          <div className="create">
-            <ButtonCreate />
-          </div>
-          <div className="notes">
-            <Notes />
-            <p className="socket">{time}</p>
-          </div>
+        <TabPane className="notes" tab="Notes" key="1">
+          <ButtonCreate />
+          <Notes />
+          <p className="socket">{time}</p>
         </TabPane>
-        <TabPane tab="Archive" key="2">
-          <div className="notes">
-            <Archive />
-          </div>
+        <TabPane className="notes" tab="Archive" key="2">
+          <Archive />
         </TabPane>
       </Tabs>
       <NoteModal

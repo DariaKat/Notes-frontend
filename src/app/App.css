@@ -7,14 +7,9 @@ b {
   color: #0c477e;
 }
 
-.create {
-  display: flex;
-  justify-content: center;
-  padding: 10px 25%;
-}
-
 .createNote {
   width: 200px;
+  margin: 0 0 0 45%;
 }
 
 .title {
@@ -27,7 +22,13 @@ b {
 }
 
 .notes {
-  margin: 0px 5% 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.table {
+  margin: 20px 10% 0;
 }
 
 .actions {
@@ -61,7 +62,7 @@ b {
 }
 
 .socket {
-  margin: 0;
+  margin: 0 10% 0 0;
   font-weight: 700;
   text-align: end;
 }
