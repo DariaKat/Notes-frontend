@@ -1,38 +1,17 @@
 import React from 'react';
-import { Table, Button } from 'antd';
-import { EditOutlined, DeleteFilled, RocketOutlined } from '@ant-design/icons';
+import { Table } from 'antd';
 import { useRootData } from '../../../hooks/use-root-data';
-import { title, dateNote, importanceNote } from './column-render';
+import {
+  title,
+  dateNote,
+  importanceNote,
+  Buttons,
+} from '../comm/column-render';
 
 const Notes = () => {
-  const { data, onClickDelete, onClickArchiveAdd, showEditModal } = useRootData(
-    (store) => ({
-      data: store.mainStore.data,
-      onClickDelete: store.mainStore.onClickDelete,
-      onClickArchiveAdd: store.mainStore.onClickArchiveAdd,
-      showEditModal: store.mainStore.showEditModal,
-    })
-  );
-
-  const button = (text) => (
-    <div className="actions">
-      <Button
-        type="primary"
-        icon={<EditOutlined />}
-        onClick={() => showEditModal(text)}
-      />
-      <Button
-        type="primary"
-        icon={<DeleteFilled />}
-        onClick={() => onClickDelete(text._id)}
-      />
-      <Button
-        type="primary"
-        icon={<RocketOutlined />}
-        onClick={() => onClickArchiveAdd(text)}
-      />
-    </div>
-  );
+  const { data } = useRootData((store) => ({
+    data: store.mainStore.data,
+  }));
 
   const columns = [
     {
@@ -64,7 +43,7 @@ const Notes = () => {
       title: 'Actions',
       key: 'actions',
       width: '10%',
-      render: button,
+      render: Buttons,
     },
   ];
 

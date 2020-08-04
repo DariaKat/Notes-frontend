@@ -1,4 +1,4 @@
-import { title, importanceNote, dateNote } from '../main-table/column-render';
+import { title, importanceNote, dateNote } from '../comm/column-render';
 
 const columns = [
   {
